@@ -9,7 +9,7 @@ import EditUserContainer from "./Components/EditUser/EditUserContainer";
 
 
 function App() {
-    const [showInfo, setShowInfo] = useState<boolean>(false)
+    const [showInfo, setShowInfo] = useState<boolean>(false) //hook
     const [showModal, setShowModal] = useState<boolean>(false)
     const [showEdit, setShowEdit] = useState<boolean>(false)
     const [showMenu, setShowMenu] = useState<boolean>(true)
