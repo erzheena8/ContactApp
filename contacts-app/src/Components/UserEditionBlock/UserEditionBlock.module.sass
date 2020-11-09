@@ -1,0 +1,72 @@
+.modal
+  width: 50vw
+  background-color: white
+  border-radius: 2em
+  position: absolute
+  z-index: 1000
+  margin: 0 auto
+  box-shadow: 5px 5px 15px 0 black
+
+
+  &Inner
+    padding: 5px 25px
+    box-sizing: border-box
+    height: 100%
+
+  &Head
+    height: 50px
+    display: flex
+    align-items: center
+    border-bottom: 1px solid rgba(0,0,0,.4)
+
+    .titleHead
+      font-size: 22px
+      margin-left: 35px
+  &Body
+    padding: 10px 35px
+    height: 60%
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+
+    .modalBodyName
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+      img
+        width: 30px
+        height: 30px
+
+  &Footer
+    border-top: 1px solid rgba(0,0,0,.4)
+    height: 50px
+    position: relative
+    margin-top: 15px
+
+    .buttonGroup
+      position: absolute
+      bottom: 15px
+      right: 35px
+
+      button
+        border: 0
+        background-color: transparent
+        cursor: pointer
+        font-size: 16px
+
+        &:last-child
+          color: #1560BD
+
+        &:focus
+          outline: none
+
+  .mainModal
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: 100vh
+
+
+

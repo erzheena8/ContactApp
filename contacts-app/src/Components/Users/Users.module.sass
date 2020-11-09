@@ -1,0 +1,59 @@
+$height-td: 70px
+
+.users, .usersWithoutMenu
+  width: 100%
+  padding: 10px
+
+.users
+  margin-left: 320px
+
+.usersWithoutMenu
+  margin-left: 0
+
+
+
+.table
+  width: 100%
+  border-collapse: collapse
+
+  thead
+    border-bottom: 1px solid rgba(0,0,0,.3)
+
+    tr
+      height: 1em
+
+    th
+      font-weight: bolder
+      opacity: .4
+      width: 100%/3
+      text-align: left
+      font-size: 17px
+
+  tbody
+
+    tr
+      border: 0
+      height: $height-td
+      cursor: pointer
+      transition: .2s
+
+
+      td
+        font-size: 16px
+
+        &:first-child
+          display: flex
+          align-items: center
+          height: $height-td
+
+        img
+          width: 25px
+          margin-right: 15px
+
+
+      &:hover
+        background-color: rgba(0,0,0,.1)
+
+
+
+

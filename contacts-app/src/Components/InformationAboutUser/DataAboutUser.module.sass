@@ -1,0 +1,48 @@
+$height_main_block: 60vh
+$height_information_block: $height_main_block - 70
+
+.information
+  width: 50vw
+  height: $height_main_block
+  background-color: white
+  border-radius: 2em
+  position: absolute
+
+  &Inner
+    padding: 5px 25px
+    box-sizing: border-box
+    height: 100%
+
+    .titleBody
+      font-size: 18px
+      margin-top: 15px
+
+  &Head
+    height: 25%
+    display: flex
+    justify-content: space-between
+    align-items: center
+    border-bottom: 1px solid rgba(0,0,0,.4)
+
+    .titleHead
+      font-size: 32px
+
+  &Body
+    padding: 10px 35px
+    height: 60%
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+
+    .itemBody
+      display: flex
+      align-items: center
+
+      img
+        width: 20px
+
+      .dataUsers
+        font-size: 18px
+        margin-left: 40px
+
+
