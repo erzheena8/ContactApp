@@ -9,7 +9,7 @@ import EditUserContainer from "./Components/EditUser/EditUserContainer";
 
 
 function App() {
-    const [showInfo, setShowInfo] = useState<boolean>(false) //hook
+    const [showInfo, setShowInfo] = useState<boolean>(false)
     const [showModal, setShowModal] = useState<boolean>(false)
     const [showEdit, setShowEdit] = useState<boolean>(false)
     const [showMenu, setShowMenu] = useState<boolean>(true)
@@ -17,7 +17,7 @@ function App() {
         <div className={'App'}>
 
             {showInfo && <DataAboutUser setShowInfo={setShowInfo} showInfo={showInfo}/>}
-            {showModal && <AddUserContainer setShowModal={setShowModal} showModal={showModal}/>}
+            {showModal && <AddUserContainer setShowModal={setShowModal} showModal={showModal}/>}//comments
             {showEdit && <EditUserContainer setShowEdit={setShowEdit} showEdit={showEdit}/>}
 
             <Header setShowMenu={setShowMenu} showMenu={showMenu}/>

@@ -25,9 +25,9 @@ export function Table(props: TablePropsType) {
 
     }
 
-    const onClickEditUser = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-        props.setShowEdit(true)
+    const onClickEditUser = () => {
         props.setEditUser(props.id)
+        props.setShowEdit(true)
 
     }
 

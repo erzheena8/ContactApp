@@ -156,7 +156,6 @@ export const usersReducer = (state:initialStateType=initialState, action:any) =>
             }
 
         case ACTION_SHOW_USERS_DATA:
-            console.log('find')
             const finedUser = state.users.find(data=>data._id===action.payload)
             if (finedUser){
             return {
@@ -223,24 +222,16 @@ export const usersReducer = (state:initialStateType=initialState, action:any) =>
             }
         case ACTION_EDIT_USERS_DATA:
             console.log('yes')
-            const editUser = state.users.find(uId=>uId._id===action.userId)
+            const editUser = state.users.find(edit=>edit._id===action.userId)
             if (editUser){
-            return{
-                editUser:editUser
-                // ...state,
-                // ...state.users,
-                // surname:editUser,
-                // name:'',
-                // birthday:'',
-                // phone:'',
-                // email:'',
-                // link:''
-            }}
+                return {
+                    ...state,
+                    editUser: editUser
+                }}
             return {
                 ...state,
                 users:state.users
             }
-
 
         default:
             return state

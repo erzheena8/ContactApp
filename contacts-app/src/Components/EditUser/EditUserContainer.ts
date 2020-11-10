@@ -5,18 +5,19 @@ import {setEditUser} from "../../Redux/action";
 
 
 const putStateToProps = (state: any) => {
+    console.log(state)
     return {
-        editUser: state.editUser,
-        users:state.users
+        editUser: state.usersData.editUser,
+        users:state
     }
 }
 
-const putDispatchToProps = (dispatch:any) => {
-    return{
-        setEditUser:(userId:string)=>{
-            dispatch(setEditUser(userId))
-    }
-    }
-}
+// const putDispatchToProps = (dispatch:any) => {
+//     return{
+//         setEditUser:(userId:string)=>{
+//             dispatch(setEditUser(userId))
+//     }
+//     }
+// }
 
-export default connect(putStateToProps,putDispatchToProps)(EditUser)
+export default connect(putStateToProps)(EditUser)

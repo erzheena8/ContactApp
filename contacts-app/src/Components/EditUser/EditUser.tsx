@@ -9,6 +9,7 @@ type AddUsersPropsType = {
 }
 
 export function EditUser(props: any) {
+    // console.log(props)
     // const [error, setError] = useState<string>('')
     //
     // const onClickCancelUserData = () => {
