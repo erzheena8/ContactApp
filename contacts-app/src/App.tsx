@@ -17,8 +17,8 @@ function App() {
         <div className={'App'}>
 
             {showInfo && <DataAboutUser setShowInfo={setShowInfo} showInfo={showInfo}/>}
-            {showModal && <AddUserContainer setShowModal={setShowModal} showModal={showModal}/>}//comments
-            {showEdit && <EditUserContainer setShowEdit={setShowEdit} showEdit={showEdit}/>}
+            {showModal && <AddUserContainer setShowModal={setShowModal} showModal={showModal}/>}
+            {showEdit && <EditUserContainer setShowEdit={setShowEdit} showEdit={showEdit}/>}//comme
 
             <Header setShowMenu={setShowMenu} showMenu={showMenu}/>
             <div className="content">
