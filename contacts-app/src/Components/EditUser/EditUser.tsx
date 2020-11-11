@@ -9,7 +9,7 @@ type AddUsersPropsType = {
 }
 
 export function EditUser(props: any) {
-    // console.log(props)
+    console.log(props)
     // const [error, setError] = useState<string>('')
     //
     // const onClickCancelUserData = () => {
@@ -59,6 +59,6 @@ export function EditUser(props: any) {
             addLink={()=>{}}
             error={'error'}
             onFocusInputElement={()=>{}}
-            onClickSaveUserData={()=>{}}/>
+            onClickSaveUserData={()=>{props.setEditUser('0')}}/>
     )
 }

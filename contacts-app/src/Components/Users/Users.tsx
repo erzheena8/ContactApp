@@ -29,7 +29,7 @@ export function Users(props: UsersPropsType | any) {
                               setShowInfo={props.setShowInfo}
                               removeUser={props.removeUsers}
                               setShowEdit={props.setShowEdit}
-                              setEditUser={props.setEditUser}
+                              // setEditUser={props.setEditUser}
     />)
     return (
         <div className={props.showMenu?classes.users:classes.usersWithoutMenu}>
@@ -65,9 +65,9 @@ const putDispatchToProps = (dispatch: any) => {
             dispatch(removeUsers(userId))
         },
 
-        setEditUser: (userId:string) => {
-            dispatch(setEditUser(userId))
-    }
+    //     setEditUser: (userId:string) => {
+    //         dispatch(setEditUser(userId))
+    // }
 
     }
 };

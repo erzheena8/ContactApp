@@ -14,7 +14,7 @@ type TablePropsType = {
     removeUser: (userId: string) => void
     setShowInfo: (showInfo: boolean) => void
     setShowEdit:(showEdit:boolean)=>void
-    setEditUser:(userId: string)=>void
+    // setEditUser:(userId: string)=>void
     showInformationUsers: (userId: string) => void
 }
 
@@ -26,7 +26,7 @@ export function Table(props: TablePropsType) {
     }
 
     const onClickEditUser = () => {
-        props.setEditUser(props.id)
+        // props.setEditUser(props.id)
         props.setShowEdit(true)
 
     }

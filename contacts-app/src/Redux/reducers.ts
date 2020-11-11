@@ -39,6 +39,11 @@ export type reducersTypes = {
     usersData: initialStateType
 }
 
+type setEditUserType = {
+    type:'ACTION_EDIT_USERS_DATA'
+    userId:string
+}
+
 type showInformationUsersType = {
     type:'ACTION_SHOW_USERS_DATA'
     payload:string
@@ -54,10 +59,7 @@ type addDataType = {
 type changeDataUserType = {
     type:'ACTION_CLEAR_USERS_DATA'|'ACTION_ADD_USERS_DATA'
 }
-type setEditUserType = {
-    type:'ACTION_EDIT_USERS_DATA'
-    userId:string
-}
+
 export type actionType = showInformationUsersType|removeUsersType|addDataType|setEditUserType|changeDataUserType
 
 const initialState:initialStateType = {
@@ -146,8 +148,21 @@ data:       {
 
 }
 
-export const usersReducer = (state:initialStateType=initialState, action:any) => {
+export const usersReducer = (state:initialStateType=initialState, action:actionType) => {
     switch (action.type) {
+        case ACTION_EDIT_USERS_DATA:
+            console.log()
+            // const editUser = state.users.find(edit=>edit._id===action.usersId)
+            // if (editUser){
+        {
+            return {
+                ...state,
+                // editUser: editUser
+            }}
+            return {
+                ...state,
+                users:state.users
+            }
         case ACTION_REMOVE_USERS_DATA:
             return {
                 ...state,
@@ -220,18 +235,7 @@ export const usersReducer = (state:initialStateType=initialState, action:any) =>
                 email:'',
                 link:''
             }
-        case ACTION_EDIT_USERS_DATA:
-            console.log('yes')
-            const editUser = state.users.find(edit=>edit._id===action.userId)
-            if (editUser){
-                return {
-                    ...state,
-                    editUser: editUser
-                }}
-            return {
-                ...state,
-                users:state.users
-            }
+
 
         default:
             return state

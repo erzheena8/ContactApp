@@ -21,6 +21,13 @@ export const showInformationUsers = (userId:string) => {
     }
 }
 
+export const setEditUser = (userId:string) => {
+    return {
+        type: ACTION_EDIT_USERS_DATA,
+        userId:userId
+    }
+}
+
 export const removeUsers = (userId:string) =>{
         return {
             type: ACTION_REMOVE_USERS_DATA,
@@ -74,10 +81,5 @@ export const clearUserData = () => {
             type: ACTION_CLEAR_USERS_DATA,
         }
 }
-export const setEditUser = (userId:string) => {
-        return {
-            type: ACTION_EDIT_USERS_DATA,
-            userId:userId
-        }
-}
+
 

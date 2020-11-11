@@ -12,12 +12,12 @@ const putStateToProps = (state: any) => {
     }
 }
 
-// const putDispatchToProps = (dispatch:any) => {
-//     return{
-//         setEditUser:(userId:string)=>{
-//             dispatch(setEditUser(userId))
-//     }
-//     }
-// }
+const putDispatchToProps = (dispatch:any) => {
+    return{
+        setEditUser:(userId:string)=>{
+            dispatch(setEditUser(userId))
+    }
+    }
+}
 
-export default connect(putStateToProps)(EditUser)
+export default connect(putStateToProps,putDispatchToProps)(EditUser)

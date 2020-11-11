@@ -11,14 +11,14 @@ import EditUserContainer from "./Components/EditUser/EditUserContainer";
 function App() {
     const [showInfo, setShowInfo] = useState<boolean>(false)
     const [showModal, setShowModal] = useState<boolean>(false)
-    const [showEdit, setShowEdit] = useState<boolean>(false)
+    const [showEdit, setShowEdit] = useState<boolean>(false) //asdhjfgjksdf 
     const [showMenu, setShowMenu] = useState<boolean>(true)
     return (
         <div className={'App'}>
 
             {showInfo && <DataAboutUser setShowInfo={setShowInfo} showInfo={showInfo}/>}
             {showModal && <AddUserContainer setShowModal={setShowModal} showModal={showModal}/>}
-            {showEdit && <EditUserContainer setShowEdit={setShowEdit} showEdit={showEdit}/>}//comme
+            {showEdit && <EditUserContainer setShowEdit={setShowEdit} showEdit={showEdit}/>}
 
             <Header setShowMenu={setShowMenu} showMenu={showMenu}/>
             <div className="content">
