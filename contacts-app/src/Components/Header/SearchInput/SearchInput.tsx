@@ -1,14 +1,24 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import classes from './SearchInput.module.sass';
 import loupe from './loupe.png'
 type SearchInputPropsType = {
-    placeholder:string
+    searchInput:string
+    onChangeSearchInput: (title: string)=>void
 }
 
 export function SearchInput(props:SearchInputPropsType) {
+    const onChangeInput=(e: React.ChangeEvent<HTMLInputElement>)=> {
+        props.onChangeSearchInput(e.currentTarget.value)
+    }
     return (
        <>
-           <input className={classes.search} type="text" placeholder={props.placeholder} style={{backgroundImage: `url(${loupe})`}}/>
+           <input
+               className={classes.search}
+               type="text"
+               placeholder={'Поиск'}
+               style={{backgroundImage: `url(${loupe})`}}
+               value={props.searchInput}
+               onChange={onChangeInput}/>
        </>
     );
 }

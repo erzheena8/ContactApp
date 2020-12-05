@@ -1,85 +1,141 @@
-import {
-    ACTION_ADD_USERS_BIRTHDAY,
-    ACTION_ADD_USERS_DATA,
-    ACTION_ADD_USERS_EMAIL,
-    ACTION_ADD_USERS_LINK,
-    ACTION_ADD_USERS_NAME,
-    ACTION_ADD_USERS_PHONE,
-    ACTION_ADD_USERS_SURNAME,
-    ACTION_CLEAR_USERS_DATA,
-    ACTION_EDIT_USERS_DATA,
-    ACTION_ENTER_USERS_DATA,
-    ACTION_REMOVE_USERS_DATA,
-    ACTION_SHOW_USERS_DATA
-} from "./store";
+import {useDispatch as _useDispatch} from 'react-redux';
 
 
-export const showInformationUsers = (userId:string) => {
-    return {
-        type: ACTION_SHOW_USERS_DATA,
-        payload: userId
+export enum ACTION_TYPE {
+    REMOVE_USER_ACTION = 'ContactsApp/REMOVE_USER_ACTION', //удаление контакта
+    SHOW_DATA_USER_ACTION = 'ContactsApp/SHOW_DATA_USER_ACTION', //показывает информацию о контакте
+    ENTER_DATA_USER_ACTION = 'ContactsApp/ENTER_DATA_USER_ACTION', //заполняет данные контакта
+    EDIT_DATA_USER = 'ContactsApp/EDIT_DATA_USER', //изменение данных контакта
+    ADD_DATA_USER = 'ContactsApp/ADD_DATA_USER', //добавляет данные нового контакта
+    CLEAR_DATA_USER = 'ContactsApp/CLEAR_DATA_USER', //отчищает данные контакта при нажатии отмена
+    ADD_EDIT_DATA_USER = 'ContactsApp/ADD_EDIT_DATA_USER', //
+    SEARCH_USER = 'ContactsApp/SEARCH_USER', //
+}
+
+export type RemoveDataUserType = {
+    type: ACTION_TYPE.REMOVE_USER_ACTION
+    payload: {
+        userId: string
+    }
+}
+export type SearchUserType = {
+    type: ACTION_TYPE.SEARCH_USER,
+    payload: {
+        title:string
+    }
+
+}
+
+export type ShowDataUserType = {
+    type: ACTION_TYPE.SHOW_DATA_USER_ACTION
+    payload: {
+        userId: string
     }
 }
 
-export const setEditUser = (userId:string) => {
-    return {
-        type: ACTION_EDIT_USERS_DATA,
-        userId:userId
+export type EnterDataUserType = {
+    type: ACTION_TYPE.ENTER_DATA_USER_ACTION
+    payload: {
+        title: string
+        dataset: string
     }
 }
 
-export const removeUsers = (userId:string) =>{
-        return {
-            type: ACTION_REMOVE_USERS_DATA,
-            id: userId
-        }
+export type EditDataUserType = {
+    type: ACTION_TYPE.EDIT_DATA_USER
+    payload: {
+        userId: string
+    }
+}
+export type AddDataUserType = {
+    type: ACTION_TYPE.ADD_DATA_USER
+
+}
+export type ClearDataUserType = {
+    type: ACTION_TYPE.CLEAR_DATA_USER
+
+}
+export type AddEditDataUserType = {
+    type: ACTION_TYPE.ADD_EDIT_DATA_USER
 }
 
-export const addSurname = (title:string) => {
-        return {
-            type: ACTION_ADD_USERS_SURNAME,
-            title:title
+export const RemoveDataUserAC = (userId: string): RemoveDataUserType => {
+    return {
+        type: ACTION_TYPE.REMOVE_USER_ACTION,
+        payload: {
+            userId
         }
+    }
 }
-export const addName = (title:string) => {
-        return {
-            type: ACTION_ADD_USERS_NAME,
-            title:title
+export const AddEditDataUserAC = (): AddEditDataUserType => {
+    return {
+        type: ACTION_TYPE.ADD_EDIT_DATA_USER,
+
+    }
+}
+export const AddDataUserAC = (): AddDataUserType => {
+    return {
+        type: ACTION_TYPE.ADD_DATA_USER,
+
+    }
+}
+export const ClearDataUserAC = (): ClearDataUserType => {
+    return {
+        type: ACTION_TYPE.CLEAR_DATA_USER,
+
+    }
+}
+
+export const ShowDataUserAC = (userId: string): ShowDataUserType => {
+    return {
+        type: ACTION_TYPE.SHOW_DATA_USER_ACTION,
+        payload: {
+            userId
         }
+    }
 }
-export const addBirthday = (title:string) => {
-        return {
-            type: ACTION_ADD_USERS_BIRTHDAY,
-            title:title
+export const EnterDataUserAC = (title: string, dataset: string): EnterDataUserType => {
+    return {
+        type: ACTION_TYPE.ENTER_DATA_USER_ACTION,
+        payload: {
+            title,
+            dataset
         }
+    }
 }
-export const addPhone = (title:string) => {
-        return {
-            type: ACTION_ADD_USERS_PHONE,
-            title:title
+export const EditDataUserAC = (userId: string): EditDataUserType => {
+    return {
+        type: ACTION_TYPE.EDIT_DATA_USER,
+        payload: {
+            userId
         }
+    }
 }
-export const addEmail = (title:string) => {
-        return {
-            type: ACTION_ADD_USERS_EMAIL,
-            title:title
+export const SearchUserAC = (title:string): SearchUserType => {
+    return {
+        type: ACTION_TYPE.SEARCH_USER,
+        payload: {
+            title,
         }
+    }
 }
-export const addLink = (title:string) => {
-        return {
-            type: ACTION_ADD_USERS_LINK,
-            title:title
-        }
+
+export type DataUserReducerType =
+    | RemoveDataUserType
+    | ShowDataUserType
+    | EnterDataUserType
+    | EditDataUserType
+    | AddDataUserType
+    | ClearDataUserType
+    | AddEditDataUserType
+    | SearchUserType
+
+
+export function useDispatch() {
+    const dispatch = _useDispatch()
+    return (ac: DataUserReducerType) => dispatch(ac)
 }
-export const addUserData = () => {
-        return {
-            type: ACTION_ADD_USERS_DATA,
-        }
-}
-export const clearUserData = () => {
-        return {
-            type: ACTION_CLEAR_USERS_DATA,
-        }
-}
+
+
 
 

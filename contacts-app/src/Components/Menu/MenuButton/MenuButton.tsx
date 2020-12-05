@@ -3,7 +3,7 @@ import classes from './MenuButton.module.sass';
 
 type MenuButtonPropsType = {
     title: string
-    amount?:number
+    amount?:number|'0'
 }
 
 export function MenuButton(props: MenuButtonPropsType) {

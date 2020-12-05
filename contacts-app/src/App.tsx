@@ -1,29 +1,39 @@
 import React, {useState} from 'react';
 import './App.sass';
 import {Header} from "./Components/Header/Header";
-import Users from "./Components/Users/Users";
-import DataAboutUser from "./Components/InformationAboutUser/DataAboutUser";
-import AddUserContainer from "./Components/AddUsers/AddUserContainer";
-import MenuContainer from "./Components/Menu/MenuContainer";
-import EditUserContainer from "./Components/EditUser/EditUserContainer";
+import {MenuContainer} from './Containers/MenuContainer/MenuContainer'
+import {UsersContainer} from "./Containers/UsersContainer/UsersContainer";
+import {DataAboutUserContainer} from "./Containers/DataAboutUserContainer/DataAboutUserContainer";
+import {AddUserContainer} from "./Containers/AddUserContainer/AddUserContainer";
+import {EditUserContainer} from "./Containers/EditUserContainer/EditUserContainer";
 
 
 function App() {
-    const [showInfo, setShowInfo] = useState<boolean>(false)
-    const [showModal, setShowModal] = useState<boolean>(false)
-    const [showEdit, setShowEdit] = useState<boolean>(false) //asdhjfgjksdf 
-    const [showMenu, setShowMenu] = useState<boolean>(true)
+    const [showDataModal, setShowDataModal] = useState<boolean>(false)
+    const [showAddModal, setShowAddModal] = useState<boolean>(false)
+    const [showEditModal, setShowEditModal] = useState<boolean>(false)
+    const [showMenuModal, setShowMenuModal] = useState<boolean>(true)
+
+    const [filteredUsers, setFilteredUsers] = useState<Array<string|undefined>>([])
+
+    const d = '2020-12-5'
+    const date = new Date()
+    const date2 = new Date(d)
+    console.log(date2)
+    if (date.getDate()===date2.getDate()&&date.getMonth()===date2.getMonth()&&date.getFullYear()===date2.getFullYear()) {
+        console.log(true)
+    } else console.log(false)
+
     return (
         <div className={'App'}>
+            {showDataModal && <DataAboutUserContainer setShowDataModal={setShowDataModal} showDataModal={showDataModal}/>}
+            {showAddModal && <AddUserContainer setShowAddModal={setShowAddModal} showAddModal={showAddModal}/>}
+            {showEditModal && <EditUserContainer setShowEditModal={setShowEditModal} showEditModal={showEditModal}/>}
 
-            {showInfo && <DataAboutUser setShowInfo={setShowInfo} showInfo={showInfo}/>}
-            {showModal && <AddUserContainer setShowModal={setShowModal} showModal={showModal}/>}
-            {showEdit && <EditUserContainer setShowEdit={setShowEdit} showEdit={showEdit}/>}
-
-            <Header setShowMenu={setShowMenu} showMenu={showMenu}/>
+            <Header setShowMenu={setShowMenuModal} showMenuModal={showMenuModal} setFilteredUsers={setFilteredUsers} filteredUsers={filteredUsers}/>
             <div className="content">
-                {showMenu&&<MenuContainer setShowModal={setShowModal}/>}
-                <Users setShowInfo={setShowInfo} showMenu={showMenu} setShowEdit={setShowEdit}/>
+                {showMenuModal&&<MenuContainer setShowAddModal={setShowAddModal}/>}
+                <UsersContainer setShowDataModal={setShowDataModal} setShowEditModal={setShowEditModal}/>
             </div>
         </div>
     );

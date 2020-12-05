@@ -1,64 +1,50 @@
 import React, {useState} from 'react';
-import {UserEditionBlock} from "../UserEditionBlock/UserEditionBlock";
+import {UserEditionBlockContainer} from "../../Containers/UserEditionBlockContainer/UserEditionBlockContainer";
 
 
 
 type AddUsersPropsType = {
-    setShowEdit: (showEdit: boolean) => void
-    showEdit: boolean
+    setShowEditModal: (showEdit: boolean) => void
+    surname?:string
+    name?:string
+    birthday?:string
+    phone?:string
+    email?:string
+    link?:string
+    showEditModal:boolean
+    addEditDataUser:()=>void
+    error:string
+    setError:(error:string)=>void
 }
 
-export function EditUser(props: any) {
-    console.log(props)
-    // const [error, setError] = useState<string>('')
-    //
-    // const onClickCancelUserData = () => {
-    //     props.clearUserData()
-    //     props.setShowModal(false)
-    // }
-    // const onClickSaveUserData = () => {
-    //     if ((props.name.length===0)||(props.phone.length===0)){
-    //         setError('Данное поле обязательно для ввода')
-    //     } else {
-    //         props.addUserData()
-    //         props.setShowModal(false)
-    //     }
-    // }
-    //
-    // const onKeyPressHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    //     if (e.key === 'Enter') {
-    //         onClickSaveUserData()
-    //
-    //     } else if (e.key === "Escape") {
-    //         onClickCancelUserData()
-    //     }
-    // }
-    //
-    // const onFocusInputElement = () => {
-    //     setError('')
-    // }
-
+export const EditUser:React.FunctionComponent<AddUsersPropsType>=(
+    {
+        setShowEditModal,
+        surname,
+        name,
+        birthday,
+        phone,
+        email,
+        link,
+        showEditModal,
+        addEditDataUser,
+        error,
+        setError
+    }) =>{
 
     return (
-
-        <UserEditionBlock
-            showModal={props.showEdit}
-            onClickCancelUserData={()=>{}}
-            onKeyPressHandler={()=>{}}
-            surname={'props.surname'}
-            name={'props.name'}
-            birthday={'props.birthday'}
-            phone={'props.phone'}
-            email={'props.email'}
-            link={'props.link'}
-            addSurname={()=>{}}
-            addName={()=>{}}
-            addBirthday={()=>{}}
-            addPhone={()=>{}}
-            addEmail={()=>{}}
-            addLink={()=>{}}
-            error={'error'}
-            onFocusInputElement={()=>{}}
-            onClickSaveUserData={()=>{props.setEditUser('0')}}/>
+       <UserEditionBlockContainer
+           showModal={showEditModal}
+           surname={surname}
+           name={name}
+           birthday={birthday}
+           phone={phone}
+           email={email}
+           link={link}
+           setError={setError}
+           setShowModal={setShowEditModal}
+           error={error}
+           dispatchFunction={addEditDataUser}
+       />
     )
 }

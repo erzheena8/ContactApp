@@ -11,35 +11,20 @@ type TablePropsType = {
     name: string
     phone: string
     email: string
-    removeUser: (userId: string) => void
-    setShowInfo: (showInfo: boolean) => void
-    setShowEdit:(showEdit:boolean)=>void
-    // setEditUser:(userId: string)=>void
-    showInformationUsers: (userId: string) => void
+    onClickRemoveUser:(e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>)=>void
+    onOpenShowModal:(showDataModal:boolean)=>void
+    onClickShowUser:()=>void
+    onClickEditUser:(e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>)=>void
+
 }
 
 export function Table(props: TablePropsType) {
-    const onClickShowUserInformation = (e: React.MouseEvent<HTMLTableRowElement>) => {
-        props.setShowInfo(true)
-        props.showInformationUsers(props.id)
-
-    }
-
-    const onClickEditUser = () => {
-        // props.setEditUser(props.id)
-        props.setShowEdit(true)
-
-    }
-
-    const onClickRemoveUser = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-        props.removeUser(props.id)
-        props.setShowInfo(false)
-    }
 
     return (
-        <tr onClick={onClickShowUserInformation}>
+        <tr onClick={props.onClickShowUser}>
             <td>
-                <img src={user}/> {props.surname} {props.name}
+                <img src={user}/>
+                {props.surname} {props.name}
             </td>
             <td>
                 {props.phone}
@@ -48,10 +33,10 @@ export function Table(props: TablePropsType) {
                 {props.email}
             </td>
             <td>
-                <IconButton onClick={onClickEditUser}>
+                <IconButton onClick={props.onClickEditUser}>
                     <EditIcon/>
                 </IconButton>
-                <IconButton onClick={onClickRemoveUser} >
+                <IconButton onClick={props.onClickRemoveUser}>
                     <Delete/>
                 </IconButton>
             </td>

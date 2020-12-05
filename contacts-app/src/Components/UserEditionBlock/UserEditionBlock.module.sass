@@ -29,14 +29,46 @@
     flex-direction: column
     justify-content: space-around
 
+    input
+      height: 25px
+      border: 0
+      font-size: 16px
+      border-bottom: 1px solid rgba(0,0,0,.5)
+      margin-top: 25px
+
+      &:focus
+        outline: 0
+        border-bottom: 2px solid rgb(0,0,0)
+
+
+      &:hover
+        //border-bottom: 1px solid rgb(0,0,0)
+
+    .errorBlock
+      width: 46%
+      position: relative
+
+      .error
+        border-bottom: 2px solid red
+        width: 100%
+
+
+      .errorMessage
+        font-size: .6em
+        position: absolute
+        bottom: -15px
+        color: red
+
+    .errorBlockEmail
+      width: 100%
+
     .modalBodyName
       display: flex
       justify-content: space-between
       align-items: center
 
-      img
-        width: 30px
-        height: 30px
+      input
+        width: 45%
 
   &Footer
     border-top: 1px solid rgba(0,0,0,.4)
