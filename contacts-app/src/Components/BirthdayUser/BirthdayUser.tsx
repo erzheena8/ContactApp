@@ -17,7 +17,12 @@ export const BirthdayUser: React.FunctionComponent<BirthdayUserPropsType> =
                             : ''}
                         {userDate
                             ? userDate.length > 0 && userDate.map((uD: any) => {
-                            return <span key={uD._id}>{uD.surname} {uD.name},</span>
+                                if (userDate[userDate.length-1]._id===uD._id)
+                                {
+                                    return <span key={uD._id}> {uD.surname} {uD.name}</span>
+
+                                }
+                            return <span key={uD._id}> {uD.surname} {uD.name},</span>
                         })
                             : ''}
                     </div>

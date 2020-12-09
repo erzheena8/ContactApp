@@ -23,7 +23,7 @@ export const BirthdayUserContainer: React.FunctionComponent<BirthdayUserContaine
         setUserDate([...bU])
 
 
-    }, [users, date])
+    }, [users, date.getMonth(), date.getDate()])
     // useEffect(() => {
     //     const bUT = users.filter(b =>
     //     date.getDate()+1 === new Date(b.birthday).getDate()+1

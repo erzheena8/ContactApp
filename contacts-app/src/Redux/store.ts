@@ -7,5 +7,10 @@ const reducer = combineReducers({
     })
 
 export type IGlobalState = ReturnType<typeof reducer>
+//@ts-ignore
+const persistedState = localStorage.getItem('reduxState') ? JSON.parse(localStorage.getItem('reduxState')):{}
+export const store = createStore(reducer, persistedState)
 
-export const store = createStore(reducer)
+store.subscribe(()=>{
+    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+})
