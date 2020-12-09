@@ -15,15 +15,6 @@ function App() {
     const [showMenuModal, setShowMenuModal] = useState<boolean>(true)
 
     const [filteredUsers, setFilteredUsers] = useState<Array<string|undefined>>([])
-
-    const d = '2020-12-5'
-    const date = new Date()
-    const date2 = new Date(d)
-    console.log(date2)
-    if (date.getDate()===date2.getDate()&&date.getMonth()===date2.getMonth()&&date.getFullYear()===date2.getFullYear()) {
-        console.log(true)
-    } else console.log(false)
-
     return (
         <div className={'App'}>
             {showDataModal && <DataAboutUserContainer setShowDataModal={setShowDataModal} showDataModal={showDataModal}/>}

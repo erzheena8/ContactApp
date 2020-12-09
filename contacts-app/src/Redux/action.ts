@@ -130,7 +130,6 @@ export type DataUserReducerType =
     | AddEditDataUserType
     | SearchUserType
 
-
 export function useDispatch() {
     const dispatch = _useDispatch()
     return (ac: DataUserReducerType) => dispatch(ac)

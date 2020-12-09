@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {UserEditionBlock} from "../../Components/UserEditionBlock/UserEditionBlock";
 import {AddDataUserAC, ClearDataUserAC, EnterDataUserAC, useDispatch} from "../../Redux/action";
 
@@ -31,6 +31,8 @@ export const UserEditionBlockContainer:
             dispatchFunction
         }) => {
 
+    const [validationError, setValidationError] = useState<string>('')
+
     const dispatch = useDispatch()
 
     const enterDataUser = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,12 +64,27 @@ export const UserEditionBlockContainer:
         }
     }
 
+
+        const RegExpEmail=/^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/
+        let flag = email&&RegExpEmail.test(email)
+
+
+
+
+
+
     const onClickSaveDataUser = () => {
+
         if (name === '' && phone === '') {
             setError('Данное поле необходимо заполнить')
-        } else {
+        }
+        if (!flag&&email) {
+            setValidationError('Неккоректо веденное поле')
+        }
+        else {
             dispatchFunction()
             setShowModal(false)
+            setValidationError('')
         }
     }
     const onClickCancel = () => {
@@ -100,6 +117,7 @@ export const UserEditionBlockContainer:
                           error={error}
                           clearErrorField={clearErrorField}
                           onKeyPressHandler={onKeyPressHandler}
+                          validationError={validationError}
         />
     )
 

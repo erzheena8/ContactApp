@@ -23,7 +23,7 @@ export type initialStateType = {
     link: string
     uId: string
     searchInput: string
-    filteredUsers: Array<string|undefined>
+    filteredUsers: Array<string | undefined>
 }
 
 export type reducersTypes = {
@@ -45,7 +45,7 @@ const initialState: initialStateType = {
                 _id: v1(),
                 surname: 'Реплин',
                 name: 'Лемарк',
-                birthday: '1985-07-14',
+                birthday: '1985-12-09',
                 phone: '+7(961)971-02-42',
                 email: 'replin@mail.mail',
                 link: 'id17220'
@@ -54,7 +54,7 @@ const initialState: initialStateType = {
                 _id: v1(),
                 surname: 'Белова',
                 name: 'Синай',
-                birthday: '1988-07-30',
+                birthday: '1988-12-08',
                 phone: '+7(948)983-32-44',
                 email: 'belova@mail.mail',
                 link: 'id17512'
@@ -81,7 +81,7 @@ const initialState: initialStateType = {
                 _id: v1(),
                 surname: 'Лобанов',
                 name: 'Николай',
-                birthday: '1999-11-26',
+                birthday: '1999-12-06',
                 phone: '+7(928)668-08-44',
                 email: 'lobanov@mail.mail',
                 link: ''
@@ -90,7 +90,7 @@ const initialState: initialStateType = {
                 _id: v1(),
                 surname: 'Ермолаев',
                 name: 'Павел',
-                birthday: '1993-10-10',
+                birthday: '1993-12-03',
                 phone: '+7(906)196-46-23',
                 email: 'pavel@mail.mail',
                 link: 'id24572'
@@ -104,7 +104,8 @@ const initialState: initialStateType = {
     email: '',
     link: '',
     searchInput: '',
-    filteredUsers: []
+    filteredUsers: [],
+
 }
 
 export const usersReducer = (state: initialStateType = initialState, action: DataUserReducerType): initialStateType => {
@@ -242,18 +243,9 @@ export const usersReducer = (state: initialStateType = initialState, action: Dat
                 ...action.payload
             }
         case ACTION_TYPE.SEARCH_USER:
-            console.log(state.searchInput)
             return {
                 ...state,
-                // ...state.users,
-                // ...state.filteredUsers,
-                // filteredUsers: state.users.map(filter => {
-                //     if (filter.surname.toUpperCase().includes(state.searchInput.toUpperCase())) {
-                //         return filter.surname
-                //     }
-                // }),
                 searchInput: action.payload.title,
-
             }
         default:
             return state

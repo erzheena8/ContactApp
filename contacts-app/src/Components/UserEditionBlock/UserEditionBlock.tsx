@@ -17,6 +17,7 @@ type UserEditionBlockPropsType = {
     error:string
     clearErrorField:()=>void
     onKeyPressHandler:(e: React.KeyboardEvent<HTMLDivElement>)=>void
+    validationError: string
 
 }
 
@@ -73,8 +74,15 @@ export function UserEditionBlock(props: UserEditionBlockPropsType) {
                                           onChange={props.onChangeDataUser} />
                             }
 
-                            <input data-name={'email'} value={props.email} placeholder={'Электронная почта'}
-                                   onChange={props.onChangeDataUser} onFocus={props.clearErrorField}/>
+                            {props.validationError?<div className={`${classes.errorBlock}  ${classes.errorBlockEmail} `}>
+                                <input type='email' data-name={'email'} value={props.email} placeholder={'Электронная почта'}
+                                       onChange={props.onChangeDataUser} className={classes.error} onFocus={props.clearErrorField}/>
+                                {props.validationError&&<div className={classes.errorMessage}>{props.validationError}</div>}
+                            </div>:<input type='email' data-name={'email'} value={props.email} placeholder={'Электронная почта'}
+                                          onChange={props.onChangeDataUser} onFocus={props.clearErrorField}/>
+                            }
+
+
                             <input data-name={'link'} value={props.link} placeholder={'Ссылка'}
                                    onChange={props.onChangeDataUser} onFocus={props.clearErrorField}/>
 

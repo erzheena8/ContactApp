@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Menu.module.sass';
 import {Button} from "@material-ui/core";
 import {MenuButton} from "./MenuButton/MenuButton";
+import {BirthdayUserContainer} from "../../Containers/BirthdayUserContainer/BirthdayUserContainer";
 
 type MenuPropsType = {
     setShowAddModal: (showAddModal:boolean)=>void
@@ -27,6 +28,7 @@ export function Menu(props: MenuPropsType) {
                     <MenuButton title={'Back'}/>
                 </div>
             </div>
+            <BirthdayUserContainer/>
         </div>
     );
 }
