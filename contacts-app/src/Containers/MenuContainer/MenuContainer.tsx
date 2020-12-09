@@ -8,11 +8,11 @@ type MenuContainer = {
 }
 
 
-export const MenuContainer:React.FunctionComponent<MenuContainer> = ({setShowAddModal}) => {
+export const MenuContainer:React.FunctionComponent<MenuContainer> = React.memo(({setShowAddModal}) => {
     const {users}=useSelector(selectDataUsers)
     let amount = users.length
 
     return (
         <Menu amount={amount} setShowAddModal={setShowAddModal}/>
     )
-}
+})

@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {UserEditionBlockContainer} from "../../Containers/UserEditionBlockContainer/UserEditionBlockContainer";
 
 
 type AddUsersPropsType = {
-    // setShowModal: (showModal: boolean) => void
     showAddModal: boolean
     surname:string
     name:string
@@ -12,14 +11,12 @@ type AddUsersPropsType = {
     email:string
     link:string
     error:string
-    // enterDataUser:(e:React.ChangeEvent<HTMLInputElement>)=>void
     addDataUser:()=>void
-    // clearDataUser:()=>void
     setError:(error:string)=>void
     setShowAddModal:(showAddModal:boolean)=>void
 }
 
-export const AddUsers:React.FunctionComponent<AddUsersPropsType> = (
+export const AddUsers:React.FunctionComponent<AddUsersPropsType> = React.memo((
     {   showAddModal,
         surname,
         name,
@@ -47,6 +44,6 @@ export const AddUsers:React.FunctionComponent<AddUsersPropsType> = (
             dispatchFunction={addDataUser}
         />
     )
-}
+})
 
 

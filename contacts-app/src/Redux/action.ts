@@ -10,6 +10,7 @@ export enum ACTION_TYPE {
     CLEAR_DATA_USER = 'ContactsApp/CLEAR_DATA_USER', //отчищает данные контакта при нажатии отмена
     ADD_EDIT_DATA_USER = 'ContactsApp/ADD_EDIT_DATA_USER', //
     SEARCH_USER = 'ContactsApp/SEARCH_USER', //
+
 }
 
 export type RemoveDataUserType = {
@@ -38,6 +39,7 @@ export type EnterDataUserType = {
     payload: {
         title: string
         dataset: string
+        validation?: any
     }
 }
 
@@ -58,6 +60,7 @@ export type ClearDataUserType = {
 export type AddEditDataUserType = {
     type: ACTION_TYPE.ADD_EDIT_DATA_USER
 }
+
 
 export const RemoveDataUserAC = (userId: string): RemoveDataUserType => {
     return {
@@ -94,12 +97,13 @@ export const ShowDataUserAC = (userId: string): ShowDataUserType => {
         }
     }
 }
-export const EnterDataUserAC = (title: string, dataset: string): EnterDataUserType => {
+export const EnterDataUserAC = (title: string, dataset: string, validation?:any): EnterDataUserType => {
     return {
         type: ACTION_TYPE.ENTER_DATA_USER_ACTION,
         payload: {
             title,
-            dataset
+            dataset,
+            validation
         }
     }
 }
@@ -119,6 +123,7 @@ export const SearchUserAC = (title:string): SearchUserType => {
         }
     }
 }
+
 
 export type DataUserReducerType =
     | RemoveDataUserType

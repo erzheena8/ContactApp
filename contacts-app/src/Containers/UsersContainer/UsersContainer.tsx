@@ -1,29 +1,29 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Users} from "../../Components/Users/Users";
 import {useSelector} from "react-redux";
 import {selectDataUsers} from "../../Redux/selector";
 import {Table} from "../../Components/Users/TableWithUsersData/Table";
 import {UsersDataType} from "../../Redux/reducers";
-import {AddEditDataUserAC, EditDataUserAC, RemoveDataUserAC, ShowDataUserAC, useDispatch} from "../../Redux/action";
+import {EditDataUserAC, RemoveDataUserAC, ShowDataUserAC, useDispatch} from "../../Redux/action";
 
 type UsersContainerType = {
     setShowDataModal:(showDataModal:boolean)=>void
     setShowEditModal:(showEditModal:boolean)=>void
 }
 
-export const UsersContainer: React.FunctionComponent<UsersContainerType> = ({setShowDataModal, setShowEditModal}) => { //компонента контейнер для отрисовки контактов
+export const UsersContainer: React.FunctionComponent<UsersContainerType> = React.memo(({setShowDataModal, setShowEditModal}) => { //компонента контейнер для отрисовки контактов
     const {users} = useSelector(selectDataUsers)
     const dispatch = useDispatch()
 
-    const removeDataUser = (userId:string) => {
+    const removeDataUser = useCallback((userId:string) => {
         dispatch(RemoveDataUserAC(userId))
-    }
-    const showDataUser = (userId:string) => {
+    },[dispatch])
+    const showDataUser = useCallback((userId:string) => {
         dispatch(ShowDataUserAC(userId))
-    }
-    const editDataUser = (userId:string) => {
+    },[dispatch])
+    const editDataUser = useCallback((userId:string) => {
         dispatch(EditDataUserAC(userId))
-    }
+    },[dispatch])
 
     const SortUsersData = users.sort((a: UsersDataType, b: UsersDataType) => {
         if (a.surname > b.surname) {
@@ -64,4 +64,4 @@ export const UsersContainer: React.FunctionComponent<UsersContainerType> = ({set
             UsersData={SortUsersData}/>
     </>
     )
-}
+})

@@ -1,23 +1,27 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {AddUsers} from "../../Components/AddUsers/AddUsers";
 import {useSelector} from "react-redux";
 import {selectDataUsers} from "../../Redux/selector";
-import {AddDataUserAC, ClearDataUserAC, EnterDataUserAC, useDispatch} from "../../Redux/action";
+import {AddDataUserAC, useDispatch} from "../../Redux/action";
 
 type AddUserContainer = {
-    setShowAddModal:(showAddModal:boolean) => void
-    showAddModal:boolean
+    setShowAddModal: (showAddModal: boolean) => void
+    showAddModal: boolean
 }
 
 
-export const AddUserContainer:React.FunctionComponent<AddUserContainer> = ({setShowAddModal,showAddModal }) => {
+export const AddUserContainer: React.FunctionComponent<AddUserContainer> =
+    React.memo(({
+                    setShowAddModal,
+                    showAddModal
+    }) => {
     const [error, setError] = useState<string>('')
 
     const {surname, name, birthday, phone, email, link} = useSelector(selectDataUsers)
     const dispatch = useDispatch()
-    const addDataUser = () => {
+    const addDataUser = useCallback(() => {
         dispatch(AddDataUserAC())
-    }
+    },[dispatch])
 
     return (
         <AddUsers
@@ -34,7 +38,7 @@ export const AddUserContainer:React.FunctionComponent<AddUserContainer> = ({setS
             setShowAddModal={setShowAddModal}
         />
     )
-}
+})
 
 
 

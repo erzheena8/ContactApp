@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {EditUser} from "../../Components/EditUser/EditUser";
 import {useSelector} from "react-redux";
 import {selectDataUsers} from "../../Redux/selector";
@@ -9,15 +9,16 @@ type EditUserContainerType = {
     showEditModal:boolean
 }
 
-export const EditUserContainer:React.FunctionComponent<EditUserContainerType> = ({setShowEditModal,showEditModal}) => {
+export const EditUserContainer:React.FunctionComponent<EditUserContainerType> =
+    React.memo(({setShowEditModal,showEditModal}) => {
 
     const {surname, name, birthday, phone, link, email} = useSelector(selectDataUsers)
     const dispatch = useDispatch()
     const [error, setError] = useState<string>('')
 
-    const addEditDataUser = () => {
+    const addEditDataUser = useCallback(() => {
         dispatch(AddEditDataUserAC())
-    }
+    },[dispatch])
     return (
         <>
             <EditUser
@@ -35,4 +36,4 @@ export const EditUserContainer:React.FunctionComponent<EditUserContainerType> = 
             />
         </>
     )
-}
+})

@@ -6,7 +6,7 @@ type UsersPropsType = {
 }
 
 export const Users: React.FunctionComponent<UsersPropsType> =
-    ({
+    React.memo( ({
          UsersData
      }) => {
 
@@ -26,6 +26,6 @@ export const Users: React.FunctionComponent<UsersPropsType> =
                 </table>
             </div>
         );
-    }
+    })
 
 

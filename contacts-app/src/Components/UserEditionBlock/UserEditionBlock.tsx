@@ -14,14 +14,15 @@ type UserEditionBlockPropsType = {
     onChangeDataUser: (e: React.ChangeEvent<HTMLInputElement>) => void
     onClickSaveDataUser: () => void
     onClickCancel: () => void
-    error:string
-    clearErrorField:()=>void
-    onKeyPressHandler:(e: React.KeyboardEvent<HTMLDivElement>)=>void
-    validationError: string
+    error: string
+    clearErrorField: () => void
+    onKeyPressHandler: (e: React.KeyboardEvent<HTMLDivElement>) => void
+    validationErrorEmail: string
+    validationErrorPhone: string
 
 }
 
-export function UserEditionBlock(props: UserEditionBlockPropsType) {
+export const UserEditionBlock= React.memo((props: UserEditionBlockPropsType) => {
     const style = {
         marginTop: '10px'
     }
@@ -55,31 +56,45 @@ export function UserEditionBlock(props: UserEditionBlockPropsType) {
                             <div className={classes.modalBodyName}>
                                 <input data-name={'surname'} placeholder={'Фамилия'} value={props.surname}
                                        onChange={props.onChangeDataUser} onFocus={props.clearErrorField}/>
-                                {props.error?<div className={classes.errorBlock}>
-                                <input data-name={'name'} placeholder={'Имя'} value={props.name}
-                                       onChange={props.onChangeDataUser}
-                                className={classes.error} onFocus={props.clearErrorField}/>
-                                {props.error&&<div className={classes.errorMessage}>{props.error}</div>}
-                                </div>:<input data-name={'name'} placeholder={'Имя'} value={props.name}
-                                              onChange={props.onChangeDataUser}/>
+                                {props.error ? <div className={classes.errorBlock}>
+                                    <input data-name={'name'} placeholder={'Имя'} value={props.name}
+                                           onChange={props.onChangeDataUser}
+                                           className={classes.error} onFocus={props.clearErrorField}/>
+                                    {props.error && <div className={classes.errorMessage}>{props.error}</div>}
+                                </div> : <input data-name={'name'} placeholder={'Имя'} value={props.name}
+                                                onChange={props.onChangeDataUser}/>
                                 }
                             </div>
-                            <input type='date'data-name={'birthday'} value={props.birthday} placeholder={'Дата рождения'}
+                            <input type='date' data-name={'birthday'} value={props.birthday}
+                                   placeholder={'Дата рождения'}
                                    onChange={props.onChangeDataUser} onFocus={props.clearErrorField}/>
-                            {props.error?<div className={`${classes.errorBlock}  ${classes.errorBlockEmail} `}>
+
+                            {props.error
+                                ? <div className={`${classes.errorBlock}  ${classes.errorBlockEmail} `}>
                                 <input data-name={'phone'} value={props.phone} placeholder={'Телефон'}
-                                       onChange={props.onChangeDataUser} className={classes.error} onFocus={props.clearErrorField}/>
-                                {props.error&&<div className={classes.errorMessage}>{props.error}</div>}
-                            </div>:<input data-name={'phone'} value={props.phone} placeholder={'Телефон'}
-                                          onChange={props.onChangeDataUser} />
+                                       onChange={props.onChangeDataUser} className={classes.error}
+                                       onFocus={props.clearErrorField}/>
+                                {props.error && <div className={classes.errorMessage}>{props.error}</div>}
+                            </div>
+                                : props.validationErrorPhone
+                                    ?<div className={`${classes.errorBlock}  ${classes.errorBlockEmail} `}>
+                                <input className={classes.error} data-name={'phone'} value={props.phone}
+                                       placeholder={'Телефон'} onChange={props.onChangeDataUser}/>
+                                       <div className={classes.errorMessage}>{props.validationErrorPhone}</div></div>
+                                        :<input data-name={'phone'} value={props.phone} placeholder={'Телефон'} onChange={props.onChangeDataUser} />
                             }
 
-                            {props.validationError?<div className={`${classes.errorBlock}  ${classes.errorBlockEmail} `}>
-                                <input type='email' data-name={'email'} value={props.email} placeholder={'Электронная почта'}
-                                       onChange={props.onChangeDataUser} className={classes.error} onFocus={props.clearErrorField}/>
-                                {props.validationError&&<div className={classes.errorMessage}>{props.validationError}</div>}
-                            </div>:<input type='email' data-name={'email'} value={props.email} placeholder={'Электронная почта'}
-                                          onChange={props.onChangeDataUser} onFocus={props.clearErrorField}/>
+                            {props.validationErrorEmail ?
+                                <div className={`${classes.errorBlock}  ${classes.errorBlockEmail} `}>
+                                    <input type='email' data-name={'email'} value={props.email}
+                                           placeholder={'Электронная почта'}
+                                           onChange={props.onChangeDataUser} className={classes.error}
+                                           onFocus={props.clearErrorField}/>
+                                    {props.validationErrorEmail &&
+                                    <div className={classes.errorMessage}>{props.validationErrorEmail}</div>}
+                                </div> : <input type='email' data-name={'email'} value={props.email}
+                                                placeholder={'Электронная почта'}
+                                                onChange={props.onChangeDataUser} onFocus={props.clearErrorField}/>
                             }
 
 
@@ -101,7 +116,7 @@ export function UserEditionBlock(props: UserEditionBlockPropsType) {
         </Modal>
 
     )
-}
+})
 
 // <TextField label="Фамилия"
 //            style={{width: '45%'}}

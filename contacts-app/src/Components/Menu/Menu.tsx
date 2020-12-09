@@ -5,11 +5,11 @@ import {MenuButton} from "./MenuButton/MenuButton";
 import {BirthdayUserContainer} from "../../Containers/BirthdayUserContainer/BirthdayUserContainer";
 
 type MenuPropsType = {
-    setShowAddModal: (showAddModal:boolean)=>void
+    setShowAddModal: (showAddModal: boolean) => void
     amount: number
 }
 
-export function Menu(props: MenuPropsType) {
+export const Menu = React.memo((props: MenuPropsType) => {
     const styleForButtonNewContacts = {
         backgroundColor: '#d6cdc4',
         borderRadius: '3em'
@@ -17,12 +17,13 @@ export function Menu(props: MenuPropsType) {
     return (
         <div className={classes.menu}>
             <div className={classes.menuNewContact}>
-                <Button variant={"contained"} style={styleForButtonNewContacts} onClick={()=>props.setShowAddModal(true)}>Новый контакт</Button>
+                <Button variant={"contained"} style={styleForButtonNewContacts}
+                        onClick={() => props.setShowAddModal(true)}>Новый контакт</Button>
             </div>
             <div className={classes.menuInner}>
                 <div className={classes.menuButtonGroup}>
                     <MenuButton title={'Контакты'}
-                                amount={props.amount?props.amount:'0'}
+                                amount={props.amount ? props.amount : '0'}
                     />
                     <MenuButton title={'About'}/>
                     <MenuButton title={'Back'}/>
@@ -31,6 +32,6 @@ export function Menu(props: MenuPropsType) {
             <BirthdayUserContainer/>
         </div>
     );
-}
+})
 
 

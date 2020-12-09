@@ -15,7 +15,12 @@ type DataAboutUserPropsType = {
     user: UsersDataType | null
 }
 
-export const DataAboutUser: React.FunctionComponent<DataAboutUserPropsType> = ({onCloseModal, showDataModal, user}) => {
+export const DataAboutUser: React.FunctionComponent<DataAboutUserPropsType> = React.memo
+(({
+      onCloseModal,
+      showDataModal,
+      user
+}) => {
     const styleModalWindow = {
         display: 'flex',
         justifyContent: 'center',
@@ -71,7 +76,7 @@ export const DataAboutUser: React.FunctionComponent<DataAboutUserPropsType> = ({
             </Fade>
         </Modal>
     )
-}
+})
 
 
 

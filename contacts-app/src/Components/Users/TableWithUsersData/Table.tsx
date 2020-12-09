@@ -11,14 +11,14 @@ type TablePropsType = {
     name: string
     phone: string
     email: string
-    onClickRemoveUser:(e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>)=>void
-    onOpenShowModal:(showDataModal:boolean)=>void
-    onClickShowUser:()=>void
-    onClickEditUser:(e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>)=>void
+    onClickRemoveUser: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void
+    onOpenShowModal: (showDataModal: boolean) => void
+    onClickShowUser: () => void
+    onClickEditUser: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void
 
 }
 
-export function Table(props: TablePropsType) {
+export const Table = React.memo((props: TablePropsType) => {
 
     return (
         <tr onClick={props.onClickShowUser}>
@@ -43,5 +43,5 @@ export function Table(props: TablePropsType) {
 
         </tr>
     );
-}
+})
 

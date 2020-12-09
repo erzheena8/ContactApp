@@ -24,6 +24,8 @@ export type initialStateType = {
     uId: string
     searchInput: string
     filteredUsers: Array<string | undefined>
+    isValidationEmail: boolean
+    isValidationPhone: boolean
 }
 
 export type reducersTypes = {
@@ -72,7 +74,7 @@ const initialState: initialStateType = {
                 _id: v1(),
                 surname: 'Андреев',
                 name: 'Александр',
-                birthday: '2000-01-12',
+                birthday: '2000-12-10',
                 phone: '+7(983)352-11-60',
                 email: '',
                 link: ''
@@ -105,6 +107,8 @@ const initialState: initialStateType = {
     link: '',
     searchInput: '',
     filteredUsers: [],
+    isValidationEmail: true,
+    isValidationPhone: true
 
 }
 
@@ -118,7 +122,6 @@ export const usersReducer = (state: initialStateType = initialState, action: Dat
                 ...action.payload
             }
         case ACTION_TYPE.ENTER_DATA_USER_ACTION:
-            console.log(state.surname)
             switch (action.payload.dataset) {
                 case 'surname':
                     return {
@@ -142,12 +145,14 @@ export const usersReducer = (state: initialStateType = initialState, action: Dat
                     return {
                         ...state,
                         phone: action.payload.title,
+                        isValidationPhone: action.payload.validation.test(action.payload.title),
                         ...action.payload
                     }
                 case 'email':
                     return {
                         ...state,
                         email: action.payload.title,
+                        isValidationEmail: action.payload.validation.test(action.payload.title)||action.payload.title==='',
                         ...action.payload
                     }
                 case 'link':
@@ -247,6 +252,7 @@ export const usersReducer = (state: initialStateType = initialState, action: Dat
                 ...state,
                 searchInput: action.payload.title,
             }
+
         default:
             return state
     }

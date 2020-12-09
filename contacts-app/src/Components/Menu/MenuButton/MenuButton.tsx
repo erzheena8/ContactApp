@@ -6,12 +6,12 @@ type MenuButtonPropsType = {
     amount?:number|'0'
 }
 
-export function MenuButton(props: MenuButtonPropsType) {
+export const MenuButton = React.memo((props: MenuButtonPropsType) => {
 
     return (
         <>
             <button className={classes.button}>{props.title}<span className={classes.amount}> {props.amount?props.amount:''} </span></button>
         </>
     );
-}
+})
 
