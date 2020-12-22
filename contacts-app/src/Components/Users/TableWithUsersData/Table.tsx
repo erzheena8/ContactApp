@@ -11,6 +11,7 @@ type TablePropsType = {
     name: string
     phone: string
     email: string
+    isSearch: boolean
     onClickRemoveUser: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void
     onOpenShowModal: (showDataModal: boolean) => void
     onClickShowUser: () => void
@@ -19,9 +20,9 @@ type TablePropsType = {
 }
 
 export const Table = React.memo((props: TablePropsType) => {
-
     return (
-        <tr onClick={props.onClickShowUser}>
+
+           <tr onClick={props.onClickShowUser} className={!props.isSearch?classes.hiddenUser:''}>
             <td>
                 <img src={user}/>
                 {props.surname} {props.name}

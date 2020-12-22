@@ -13,13 +13,17 @@ type DataAboutUserPropsType = {
     onCloseModal: () => void
     showDataModal: boolean
     user: UsersDataType | null
+    onClickEditUser:(e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>)=>void
+    onClickRemoveUser: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>)=>void
 }
 
 export const DataAboutUser: React.FunctionComponent<DataAboutUserPropsType> = React.memo
 (({
       onCloseModal,
       showDataModal,
-      user
+      user,
+      onClickEditUser,
+      onClickRemoveUser
 }) => {
     const styleModalWindow = {
         display: 'flex',
@@ -48,10 +52,10 @@ export const DataAboutUser: React.FunctionComponent<DataAboutUserPropsType> = Re
                         <div className={classes.informationHead}>
                             <div className={classes.titleHead}> {user?.surname} {user?.name} </div>
                             <div className={classes.buttonGroup}>
-                                <IconButton>
+                                <IconButton onClick={onClickEditUser}>
                                     <EditIcon/>
                                 </IconButton>
-                                <IconButton>
+                                <IconButton onClick={onClickRemoveUser}>
                                     <Delete/>
                                 </IconButton>
                                 <IconButton onClick={onCloseModal}>

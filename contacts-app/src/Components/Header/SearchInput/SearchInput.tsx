@@ -8,19 +8,20 @@ type SearchInputPropsType = {
 }
 
 export const SearchInput = React.memo((props: SearchInputPropsType) => {
-    const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        props.onChangeSearchInput(e.currentTarget.value)
+        const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+            props.onChangeSearchInput(e.currentTarget.value)
+        }
+        return (
+            <>
+                <input
+                    className={classes.search}
+                    type="text"
+                    placeholder={'Поиск'}
+                    style={{backgroundImage: `url(${loupe})`}}
+                    value={props.searchInput}
+                    onChange={onChangeInput}/>
+            </>
+        );
     }
-    return (
-        <>
-            <input
-                className={classes.search}
-                type="text"
-                placeholder={'Поиск'}
-                style={{backgroundImage: `url(${loupe})`}}
-                value={props.searchInput}
-                onChange={onChangeInput}/>
-        </>
-    );
-})
+)
 

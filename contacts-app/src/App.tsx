@@ -17,7 +17,7 @@ function App() {
     const [filteredUsers, setFilteredUsers] = useState<Array<string|undefined>>([])
     return (
         <div className={'App'}>
-            {showDataModal && <DataAboutUserContainer setShowDataModal={setShowDataModal} showDataModal={showDataModal}/>}
+            {showDataModal && <DataAboutUserContainer setShowDataModal={setShowDataModal} showDataModal={showDataModal} setShowEditModal={setShowEditModal}/>}
             {showAddModal && <AddUserContainer setShowAddModal={setShowAddModal} showAddModal={showAddModal}/>}
             {showEditModal && <EditUserContainer setShowEditModal={setShowEditModal} showEditModal={showEditModal}/>}
 

@@ -50,6 +50,7 @@ export const UsersContainer: React.FunctionComponent<UsersContainerType> = React
 
        return  <Table   key={u._id}
                         id={u._id}
+                        isSearch={u.isSearch}
                         surname={u.surname}
                         name={u.name}
                         phone={u.phone}

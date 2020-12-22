@@ -23,8 +23,7 @@ export const Menu = React.memo((props: MenuPropsType) => {
             <div className={classes.menuInner}>
                 <div className={classes.menuButtonGroup}>
                     <MenuButton title={'Контакты'}
-                                amount={props.amount ? props.amount : '0'}
-                    />
+                                amount={props.amount ? props.amount : '0'}/>
                     <MenuButton title={'About'}/>
                     <MenuButton title={'Back'}/>
                 </div>

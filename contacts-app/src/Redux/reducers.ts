@@ -10,6 +10,7 @@ export type UsersDataType = {
     phone: string
     email: string
     link: string
+    isSearch: boolean
 }
 
 export type initialStateType = {
@@ -33,70 +34,7 @@ export type reducersTypes = {
 }
 
 const initialState: initialStateType = {
-    users:
-        [{
-            _id: v1(),
-            surname: 'Холодкова',
-            name: 'Дивора',
-            birthday: '1973-04-21',
-            phone: '+7(999)657-42-32',
-            email: 'holodkova@mail.com',
-            link: 'id32445'
-        },
-            {
-                _id: v1(),
-                surname: 'Реплин',
-                name: 'Лемарк',
-                birthday: '1985-12-09',
-                phone: '+7(961)971-02-42',
-                email: 'replin@mail.mail',
-                link: 'id17220'
-            },
-            {
-                _id: v1(),
-                surname: 'Белова',
-                name: 'Синай',
-                birthday: '1988-12-08',
-                phone: '+7(948)983-32-44',
-                email: 'belova@mail.mail',
-                link: 'id17512'
-            },
-            {
-                _id: v1(),
-                surname: 'Соболев',
-                name: 'Никита',
-                birthday: '1969-11-21',
-                phone: '+7(913)460-90-01',
-                email: 'sobolev@mail.mail',
-                link: 'id163720'
-            },
-            {
-                _id: v1(),
-                surname: 'Андреев',
-                name: 'Александр',
-                birthday: '2000-12-10',
-                phone: '+7(983)352-11-60',
-                email: '',
-                link: ''
-            },
-            {
-                _id: v1(),
-                surname: 'Лобанов',
-                name: 'Николай',
-                birthday: '1999-12-06',
-                phone: '+7(928)668-08-44',
-                email: 'lobanov@mail.mail',
-                link: ''
-            },
-            {
-                _id: v1(),
-                surname: 'Ермолаев',
-                name: 'Павел',
-                birthday: '1993-12-03',
-                phone: '+7(906)196-46-23',
-                email: 'pavel@mail.mail',
-                link: 'id24572'
-            },],
+    users: [],
     data: null,
     uId: '',
     surname: '',
@@ -204,7 +142,8 @@ export const usersReducer = (state: initialStateType = initialState, action: Dat
                     birthday: state.birthday,
                     phone: state.phone,
                     email: state.email,
-                    link: state.link
+                    link: state.link,
+                    isSearch: true
                 }, ...state.users],
                 surname: '',
                 name: '',
@@ -248,9 +187,23 @@ export const usersReducer = (state: initialStateType = initialState, action: Dat
                 ...action.payload
             }
         case ACTION_TYPE.SEARCH_USER:
+
+            // console.log(action.payload.title)
+
             return {
                 ...state,
                 searchInput: action.payload.title,
+                ...state.users,
+                users: state.users.map(u=> {
+                    if ((u.surname.toUpperCase().includes(action.payload.title.toUpperCase().trim()))
+                        ||(u.name.toUpperCase().includes(action.payload.title.toUpperCase().trim()))
+                        ||(u.email.toUpperCase().includes(action.payload.title.toUpperCase().trim()))
+                        ||(u.phone.toUpperCase().includes(action.payload.title.toUpperCase().trim())))
+                    {
+                        u.isSearch = true
+                    } else u.isSearch = false
+                    return u
+                })
             }
 
         default:
